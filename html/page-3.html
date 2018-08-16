@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css" integrity="sha256-oSrCnRYXvHG31SBifqP2PM1uje7SJUyX0nTwO2RJV54=" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <section>
+        <h2>CSS</h2>
+
+        <p>Контент, т.е. html имеет приоритет перед внешним видом.</p>
+            <p>Поэтому CSS должен делать две вещи: </p>
+        <ol>
+            <li>Не искажать html при <i>отключенном</i> файле  CSS</li>
+            <li>Не искажать html теги <i>при включенном</i> файле CSS</li>
+        </ol>
+        <h4>Цвет и фон</h4>
+        <p>Проверяйте чтобы фон и текст сочетались.</p>
+        <p>Проверяйте чтобы фон и текст сочетались при отключенном файле CSS.</p>
+        <h4>Конвертор контрастного цвета JS</h4>
+        <details>Код ниже позволяет автоматически рассчитать для цвета HEX контрастный цвет. Один из таких цветом может быть фоном, а другой текстом.
+        <pre><code>function setContrastColor(color) {
+    const arr = color.split("");
+    const red = +("0x" + arr.slice(1, 3).join(""));
+    const green = +("0x" + arr.slice(3, 5).join(""));
+    const blue = +("0x" + arr.slice(5).join(""));
+    const luma = (0.299 * red + 0.587 * green + 0.114 * blue) / 255;
+    return luma &gt; 0.5 ? "#000000" : "#ffffff";
+}</code></pre>
+    </details>
+        <p>Пример реализации, где клик по названию цвета делает выбранный цвет фоном, а все <a target="_blank" href="https://gennadiy1970.github.io/goit_fe/module-01/index.html">тексты на странице получают контрастный цвет в зависимости от цвета фона - черный или белый</a>.</p>
+        <h4>Невидимость элементов</h4>
+        <p>Элемент может быть невидим на экране, но видим для screeneader. 
+            Но также возможно сделать элемент невидимым и для экрана и для программы-чтеца.</p>
+        <p>Хорошая идея состоит в том, чтобы сделать видимым нужный контент для screeaneader.
+            Бонусом (и очень веским) мы получим скорость работы web-приложения.
+            Дело в том, что если элемент не видим, но есть в DOM (opacity: 0), 
+            то он доступен для screeneader, 
+            а браузер для появления такого элемента использует <b>Repeaint</b>.
+            Если элемент не в DOM (display: block), то это элемент невидим для screeneader,
+            а браузер для появления такого элемента использует <b>Reflow</b>.
+            Пересчет всей страницы (Reflow) - это намного более дорогая по ресурсам операция,
+            чем перерисовка отдельной части DOM (Repeaint).
+        </p>
+        <h4>Проверка на zoom</h4>
+        <p>Пользователи могут использовать <b>zoom</b> или переопределить стили вашей страницы,
+            увеличив размер шрифта в body. Желательно предусмотреть такую возможность -
+             сайт не должен развалился, хотя допустимо потерять часть идей дизайнера.
+        </p>
+    </section>
+    </div>
+    <a class="back" href="../index.html">back</a>
+</body>
+</html>
